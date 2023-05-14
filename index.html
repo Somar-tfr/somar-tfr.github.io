@@ -1,9 +1,277 @@
-<html>
- 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somar Taifour | Informatik | Full-Stack </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@300;400&family=Playfair+Display&family=Playfair+Display+SC&family=Poppins:wght@200;300&family=Raleway&display=swap"
+        rel="stylesheet">
+
+</head>
 <body>
-  <h1>Somar Taifour</h1>
-  <p>Welcome to my website!</p>
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
+    <header>
+        <div class="logoandlist">
+            <h1 class="logo">Somar Taifour</h1>
+            <nav class="nav-menu">
+                <ul class="breadcrumb">
+                    <li><a href="#werbinich" id="listwerbinich">Wer bin Ich?</a></li>
+                    <li><a href="#projekte" id="listprojekte">Projekte</a></li>
+                    <li><a href="#lebenslauf" id="listlebenslauf">Lebenslauf</a></li>
+                    <li><a href="#zertifikate" id="listzertifikate">Zertifikate</a></li>
+                    <li><a href="#blog" id="listblog">Blog</a></li>
+                    <li><a href="#kontakt" id="listkontakt">Kontakt</a></li>
+            
+                </ul>
+            </nav>
+        </div>
+        
+
+        <div class="controls">
+            <label class="toggleswitch">
+                Dark Mode
+                <input type="checkbox" id="darkmodetoggle">
+                <div class="toggleswitchborder">
+                    <div class="toggleswitchdot"></div>
+                </div>
+            </label>
+        </div>
+    </header>
+
+    <main>
+        <section class="banner">
+            <div id="bannerinhalt">
+                <p id="titel">Software Entwickler</p>
+                <div id="personalphoto">
+                    <img src="./1642573619789.jpg">
+                </div>
+            </div>
+            
+                
+        </section>
+
+        <!-- WerBinIch -->
+        <section >
+            <div id="werbinich" class="abschnitt">
+                <h2>Wer bin Ich?</h2>
+                <p>Hallo! ich bin Somar Taifour.
+                    Ich habe mich vor Kurzem in den schönen Welten der Informatik und Enticklung gefunden.
+                    Die Originalität, die Kreativität und die Aktuellität da hatte mich sehr stark angesprochen,
+                    deshalb habe ich mich entschieden meine Interesse da zu folgen.
+                    Ich habe mehrere Online Kurse für Software und Web Entwicklung und verschiedene Programiersprachen
+                    gemacht(Objekt Orientierte Programierung mit Java, Python, also C, Javascript).
+                    Ich bin Quereinsteiger, habe als Architekt gearbeitet. Ich interessiere mich auch für Philosophie, Kunst, und Kochen.
+                </p>
+            </div>
+            
+        </section>
+
+        <!-- Prjekte -->
+        <section>
+            <div id="projekte" class="abschnitt center">
+                <h2>Projekte</h2>
+            
+                <div class="projektelement">
+                    <div class="projekthintergrund">
+                        <div class="projektbild">
+                            <img src="./projekt1.jpg">
+                        </div>
+                        <div class="projektinhalt">
+                            <h3>Erster Projekt</h3>
+                            <p>Ein Projekt mit HTML css javascript entwickelt!</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="projektelement">
+                    <div class="projekthintergrund">
+                        <div class="projektbild">
+                            <img src="./Projekt2.jpg">
+                        </div>
+                        <div class="projektinhalt">
+                            <h3>Zweiter Projekt</h3>
+                            <p>Ein Projekt mit HTML css javascript entwickelt!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Lebenslauf-->
+        <section>
+            <div id="lebenslauf" class="abschnitt">
+                <h2>Lebenslauf</h2>
+            
+                <div id="lebenslaufinhalt">
+                    <div class="auflistung">
+                        <h3>Akademische Laufbahn</h3>
+                        <ul class="whenwhatlist">
+                            <li><em>2022 - heute</em> | Fernuniversität in Hagen : Bsc. Informatik</li>
+                            <li><em>2012 - 2014</em> | Nationale Universität für Architektur und
+                                Bauwesen Armeniens : Master in Architektur</li>
+                            <li><em>2005 - 2010</em> | Albaath Universität in Homs : Bachelor in Architektur</li>
+                        </ul>
+                    </div>
+            
+                    <div class="auflistung">
+                        <h3>Berufliche Laufbahn</h3>
+                        <ul class="whenwhatlist">
+                            <li><em>2019 - 2023</em> |
+                                Rübsamen Partner Architekten
+                                Projekt Architekt LP 1-5</li>
+                            <li><em>2016 - 2019</em> |
+                                Lepel & Lepel Artchitektur Büro
+                                Projekt Architekt LP 1-5</li>
+                        </ul>
+                    </div>
+            
+                    <div class="auflistung">
+                        <h3>Skills</h3>
+                        <ul class="whenwhatlist">
+                            <li><strong>Kentnisse</strong> |
+                                Python -
+                                Java -
+                                OOP -
+                                C -
+                                Javascript -
+                                HTML -
+                                CSS -
+                                GIT-
+                                Pascal -
+                                Latex -
+                                BIM -
+                                CAD -
+                                3ds Max -
+                                Adobe Photoshop
+                            </li>
+                            <li><strong>Sprachen</strong> |
+                                Deutsch -
+                                Englisch -
+                                Arabisch
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Zertifikate -->
+        <section>
+            <div id="zertifikate" class="abschnitt center">
+                <h2>Zertifikate</h2>
+                <div id="zertifikatscheine" class="abschnitt">
+                    <img src="./c.png">
+            
+                    <img src="./python.png">
+            
+                    <img src="./javascript.png">
+            
+                    <img src="./css.png">
+            
+                    <img src="./html.png">
+                </div>
+
+            </div>
+        </section>
+        
+
+        <!-- Blog -->
+        <section>
+            <div id="blog" class="abschnitt center">
+                <h2>Blog</h2>
+            
+                <div class="projektelement">
+                    <div class="projekthintergrund">
+                        <div class="projektbild">
+                            <img src="./Projekt1.jpg">
+                        </div>
+                        <div class="projektinhalt">
+                            <h3>Erste Blog Eingabe</h3>
+                            <p>hier schreibe ich über Sachen!</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="projektelement">
+                    <div class="projekthintergrund">
+                        <div class="projektbild">
+                            <img src="./projekt2.jpg">
+                        </div>
+                        <div class="projektinhalt">
+                            <h3>Zweite Blog Eingabe</h3>
+                            <p>hier schreibe ich auch aber über ganz andere Sachen!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Kontakt-->
+        <section>
+            <div id="kontakt" class="abschnitt center">
+                <h2>Kontakt</h2>
+                <p>Haben Sie einen interessanten Projekt wo wir gemeinsam dran arbeiten können? dann können Sie mich auf Folgende
+                    Kanale kontaktieren: </p>
+
+                <nav>
+                    <ul>
+                        <!--<li><a href="">E-mail</a></li>-->
+                        <li><a href="https://www.linkedin.com/in/somar-taifour/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://www.xing.com/profile/Somar_Taifour/" target="_blank">Xing</a></li>
+                        <li><a href="https://github.com/Somar-tfr/" target="_blank">GitHub</a></li>
+
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <section>
+            <div id="footer">
+                <!-- linke -->
+            
+                <div id="linke">
+                    <h3 class="logo">Somar Taifour</h3>
+                    <nav class="nav-menu">
+                        <ul class="breadcrumb">
+                            <li><a href="#werbinich" id="listfooterwerbinich">Wer bin Ich?</a></li>
+                            <li><a href="#projekte" id="listfooterprojekte">Projekte</a></li>
+                            <li><a href="#lebenslauf" id="listfooterlebenslauf">Lebenslauf</a></li>
+                            <li><a href="#zertifikate" id="listfooterzertifikate">Zertifikate</a></li>
+                            <li><a href="#blog" id="listfooterblog">Blog</a></li>
+                            <li><a href="#kontakt" id="listfooterkontakt">Kontakt</a></li>
+            
+                        </ul>
+                    </nav>
+                </div>
+                <br>
+                <!-- footnotes-->
+                <div id="footnotes">
+                    <p>Copyright © 2023 Somar Taifour</p>
+                    <nav>
+                        <ul>
+                            <li><a href="#">Impressum</a></li>
+                            <li><a href="#">Rechtliche Hinweise</a></li>
+                            <li><a href="#">Datenschutzerklärung</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+    </footer>
+    <script src="main.js"></script>
 </body>
- 
 </html>
