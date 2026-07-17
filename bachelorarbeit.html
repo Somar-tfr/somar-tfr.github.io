@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bachelorarbeit | Somar Taifour</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@300;400&family=Playfair+Display&family=Playfair+Display+SC&family=Poppins:wght@200;300&family=Raleway&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logoandlist">
+            <h1 class="logo"><a href="index.html">Somar Taifour</a></h1>
+            <nav class="nav-menu">
+                <ul class="breadcrumb">
+                    <li><a href="index.html#werbinich" id="listwerbinich">Wer bin Ich?</a></li>
+                    <li><a href="index.html#projekte" id="listprojekte">Projekte</a></li>
+                    <li><a href="index.html#lebenslauf" id="listlebenslauf">Lebenslauf</a></li>
+                    <li><a href="index.html#zertifikate" id="listzertifikate">Zertifikate</a></li>
+                    <li><a href="index.html#blog" id="listblog">Blog</a></li>
+                    <li><a href="index.html#kontakt" id="listkontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="controls">
+            <label class="toggleswitch">
+                Dark Mode
+                <input type="checkbox" id="darkmodetoggle">
+                <div class="toggleswitchborder">
+                    <div class="toggleswitchdot"></div>
+                </div>
+            </label>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="abschnitt detailseite">
+                <p class="zurueck"><a href="index.html#projekte">← Zurück zu Projekte</a></p>
+
+                <h2>Bachelorarbeit: Effizienzanalyse von Post-Quanten-Schlüsselkapselungsverfahren auf dem IoT-Mikrocontroller RP2350</h2>
+
+                <div class="detailbild">
+                    <img src="./projekt-bachelorarbeit.jpg" alt="Bachelorarbeit Titelbild">
+                </div>
+
+                <p>
+                    Im Rahmen meines B.Sc.-Studiums Informatik an der Fernuniversität in Hagen (04/2022 – voraus. 10/2026,
+                    Schwerpunkt Cybersecurity) habe ich meine Bachelorarbeit dem Thema
+                    <strong>Post-Quanten-Kryptografie auf dem IoT-Mikrocontroller RP2350</strong> gewidmet.
+                    Die Arbeit wurde mit der Note <strong>1,3</strong> bewertet.
+                </p>
+
+                <h3>Motivation</h3>
+                <p>
+                    Quantencomputer gefährden langfristig die Sicherheit aktueller asymmetrischer
+                    kryptografischer Verfahren. Daher ist der Einsatz von Post-Quanten-Kryptografie (PQC)
+                    erforderlich. Da IoT-Systeme weit verbreitet sind und gleichzeitig nur begrenzte
+                    Rechenleistung, Speicher- und Energieressourcen aufweisen, ist die Evaluierung von
+                    PQC-Verfahren auf solchen Plattformen von besonderer Bedeutung.
+                </p>
+
+                <h3>Untersuchungsgegenstand</h3>
+                <p>
+                    Die Arbeit untersucht die Effizienz der PQC-Schlüsselkapselungsverfahren (KEMs)
+                    <strong>ML-KEM</strong> und <strong>HQC</strong> auf den beiden CPU-Kernen
+                    <strong>Arm Cortex-M33</strong> und <strong>RISC-V Hazard3</strong> des
+                    IoT-Mikrocontrollers <strong>RP2350</strong>, der im Raspberry Pi Pico 2 W verbaut ist.
+                    Im Zentrum standen zwei Forschungsfragen:
+                </p>
+                <ul class="whenwhatlist">
+                    <li>Wie unterscheiden sich ML-KEM und HQC hinsichtlich Laufzeit, Speicherbedarf und Energieverbrauch auf dem RP2350?</li>
+                    <li>Welchen Einfluss hat die Wahl des CPU-Kerns (Arm Cortex-M33 vs. RISC-V Hazard3) auf die Effizienz der Verfahren?</li>
+                </ul>
+
+                <h3>Methodik</h3>
+                <p>
+                    Die Messungen wurden auf beiden CPU-Kernen auf derselben Hardware- und
+                    Implementierungsbasis durchgeführt. Laufzeit und Speicherbedarf wurden mit eigens in
+                    C implementierten Messmethoden erfasst, der Energieverbrauch mithilfe des
+                    <strong>Nordic Power Profiler Kit II</strong> gemessen.
+                </p>
+
+                <h3>Ergebnisse</h3>
+                <p>
+                    ML-KEM erweist sich in allen betrachteten Metriken und über alle NIST-Sicherheitsstufen
+                    hinweg als effizienter als HQC. Auf Arm Cortex-M33 und RISC-V Hazard3 lässt sich ML-KEM
+                    dabei ähnlich effizient ausführen; bei der Schlüsselerzeugung von ML-KEM-768 und
+                    ML-KEM-1024 bietet der Arm Cortex-M33 jedoch leichte Vorteile bei Laufzeit und
+                    Energieverbrauch. HQC wiederum schneidet auf dem RISC-V Hazard3 bei Laufzeit und
+                    Energieverbrauch besser ab, während der Speicherbedarf für <code>.data</code> auf dem
+                    Arm Cortex-M33 geringer ausfällt als auf dem RISC-V Hazard3.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section>
+            <div id="footer">
+                <div id="linke">
+                    <h3 class="logo">Somar Taifour</h3>
+                    <nav class="nav-menu">
+                        <ul class="breadcrumb">
+                            <li><a href="index.html#werbinich" id="listfooterwerbinich">Wer bin Ich?</a></li>
+                            <li><a href="index.html#projekte" id="listfooterprojekte">Projekte</a></li>
+                            <li><a href="index.html#lebenslauf" id="listfooterlebenslauf">Lebenslauf</a></li>
+                            <li><a href="index.html#zertifikate" id="listfooterzertifikate">Zertifikate</a></li>
+                            <li><a href="index.html#blog" id="listfooterblog">Blog</a></li>
+                            <li><a href="index.html#kontakt" id="listfooterkontakt">Kontakt</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <br>
+                <div id="footnotes">
+                    <p>Copyright © 2026 Somar Taifour</p>
+                    <nav>
+                        <ul>
+                            <li><a href="#">Impressum</a></li>
+                            <li><a href="#">Rechtliche Hinweise</a></li>
+                            <li><a href="#">Datenschutzerklärung</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
