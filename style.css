@@ -399,7 +399,6 @@ font-family: 'Quicksand', sans-serif;
     padding-right: 0;
     font-size: 3rem;
     width: 100%;
-    margin-bottom: 1.5rem;
 }
 
 .detailseite h3{
@@ -407,37 +406,21 @@ font-family: 'Quicksand', sans-serif;
     color: var(--titlesColor);
     font-size: 2rem;
     width: 100%;
-    margin-top: 2.5rem;
-    margin-bottom: 0.5rem;
 }
 
 .detailseite p{
     width: 100%;
     text-align: justify;
-    line-height: 1.5;
-    margin: 0.5rem 0;
 }
 
 .detailseite .whenwhatlist{
     width: 100%;
-    margin: 0.5rem 0 1.5rem 0;
 }
 
 .detailseite .whenwhatlist li{
     text-align: justify;
     list-style-type: disc;
     margin-left: 1.5rem;
-    line-height: 1.5;
-    margin-bottom: 0.6rem;
-}
-
-.detailseite code{
-    font-family: 'Courier New', monospace;
-    font-size: 0.85em;
-    background-color: var(--bannerColor);
-    color: var(--titlesColor);
-    padding: 0.15rem 0.5rem;
-    border-radius: 0.5rem;
 }
 
 .detailbild{
