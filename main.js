@@ -2,7 +2,10 @@ const listitems = ["listwerbinich", "listprojekte", "listlebenslauf", "listzerti
     "listfooterwerbinich", "listfooterprojekte", "listfooterlebenslauf", "listfooterzertifikate", "listfooterblog", "listfooterkontakt" ];
 const listitemsObjects = []
 listitems.forEach(function(item){
-    listitemsObjects.push(document.getElementById(item));
+    const el = document.getElementById(item);
+    if (el) {
+        listitemsObjects.push(el);
+    }
 })
 //changes
 function mouseClick(event){
