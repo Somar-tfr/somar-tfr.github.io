@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fachpraktikum IT-Sicherheit | Somar Taifour</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@300;400&family=Playfair+Display&family=Playfair+Display+SC&family=Poppins:wght@200;300&family=Raleway&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logoandlist">
+            <h1 class="logo"><a href="index.html">Somar Taifour</a></h1>
+            <nav class="nav-menu">
+                <ul class="breadcrumb">
+                    <li><a href="index.html#werbinich" id="listwerbinich">Wer bin Ich?</a></li>
+                    <li><a href="index.html#projekte" id="listprojekte">Projekte</a></li>
+                    <li><a href="index.html#lebenslauf" id="listlebenslauf">Lebenslauf</a></li>
+                    <li><a href="index.html#zertifikate" id="listzertifikate">Zertifikate</a></li>
+                    <li><a href="index.html#blog" id="listblog">Blog</a></li>
+                    <li><a href="index.html#kontakt" id="listkontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="controls">
+            <label class="toggleswitch">
+                Dark Mode
+                <input type="checkbox" id="darkmodetoggle">
+                <div class="toggleswitchborder">
+                    <div class="toggleswitchdot"></div>
+                </div>
+            </label>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="abschnitt detailseite">
+                <p class="zurueck"><a href="index.html#projekte">← Zurück zu Projekte</a></p>
+
+                <h2>Fachpraktikum IT-Sicherheit, IT-Forensik und Datenschutz</h2>
+
+                <div class="detailbild">
+                    <img src="./projekt-praktikum.jpg" alt="Praktikum Titelbild">
+                </div>
+
+                <p>
+                    Von 04/2025 bis 08/2025 habe ich im Rahmen meines Informatikstudiums an der
+                    Fernuniversität in Hagen (SoSe 2025) das Fachpraktikum IT-Sicherheit, IT-Forensik
+                    und Datenschutz absolviert – als Gruppenarbeit.
+                    Titel unserer Ausarbeitung: <strong>„Entwicklung eines DoH-Tunnels"</strong>.
+                    
+                </p>
+
+                <h3>Auswahl des Trägerprotokolls</h3>
+                <p>
+                    Zunächst haben wir POP3, IMAP und DNS over HTTPS (DoH) als mögliche Trägerprotokolle
+                    für den Tunnel verglichen. POP3 fiel wegen fehlender Verschlüsselung, eingeschränkter
+                    Funktionalität und geringerer Firewall-Freigabe früh raus. IMAP bietet zwar
+                    bidirektionale Kommunikation und größere Nutzdaten, überträgt aber ebenfalls
+                    unverschlüsselt. Die Wahl fiel auf <strong>DoH</strong>: Der DNS-Traffic wird per HTTPS
+                    verschlüsselt, DoH-Pakete sind im normalen Webverkehr gut getarnt, das Modell ist
+                    bidirektional (Request-Response), und es existieren bereits Tunneling-Tools wie
+                    Iodine oder dnscat2, an denen man sich orientieren kann. Der Nachteil kleinerer
+                    Nutzdaten pro Anfrage im Vergleich zu IMAP haben wir dafür in Kauf genommen.
+                    Als Umfang haben wir uns bewusst auf das Tunneln von HTTP(S)-Verbindungen
+                    beschränkt, da bereits das rein für HTTP(S) funktionsfähige Setup anspruchsvoll genug war.
+                </p>
+
+                <h3>Architekturentscheidung</h3>
+                <p>
+                    Beim Brainstorming standen zwei Varianten zur Debatte: ein Tunnel direkt vom Client
+                    zu einem selbst gebauten Server, oder ein Aufbau näher an der eigentlichen
+                    DoH-Struktur (Client → Tunnel über DoH → DoH-Resolver → eigener Server →
+                    Zielserver). Wir haben uns für die zweite Variante entschieden, weil sie die
+                    bestehende Infrastruktur eines öffentlichen DoH-Providers nutzt und dadurch
+                    unauffälliger wirkt – der Verkehr sieht aus wie legitimer DNS-Traffic.
+                </p>
+
+                <h3>Praktische Umsetzung</h3>
+                <ul class="whenwhatlist">
+                    <li>Registrierung einer eigenen Domain mit passenden A- und NS-Einträgen, sodass Anfragen an bestimmte Subdomains gezielt an unseren eigenen Server (Azure-VM mit Ubuntu) weitergeleitet werden</li>
+                    <li>Erste Tests mit dem bestehenden Tool <strong>Iodine</strong>, um DNS-Tunneling und die zugehörige Paketstruktur mit tcpdump nachzuvollziehen; Port 53 musste dafür in der Azure-VM für ein- und ausgehenden Verkehr freigegeben werden</li>
+                    <li>Entwicklung eines eigenen DNS-/DoH-Tunnelservers in Java; Deaktivierung von systemd-resolved unter Ubuntu, damit der eigene Server auf Port 53 lauschen konnte</li>
+                    <li>Feinarbeiten am Antwortverhalten: Übereinstimmung der DNS-Message-Header-ID, Datenübertragung über TXT-Records, Berücksichtigung des UDP-DNS-Limits von 512 Byte pro Paket</li>
+                </ul>
+
+                <h3>Systemarchitektur</h3>
+                <p>
+                    Das in Java (Maven) entwickelte Programm gliedert sich in vier Komponenten:
+                    <strong>Client</strong>, <strong>Server</strong>, <strong>Dateiverarbeitungsmodul</strong>
+                    und <strong>Proxy-Tunnel</strong>. Der Client codiert Nutzdaten optional
+                    verschlüsselt, wandelt sie über eine eigene Base32-Klasse um und zerlegt sie in
+                    Anfragepakete von maximal 255 Zeichen, die wiederum in Segmente von maximal
+                    60 Zeichen als Labels in den Hostnamen der DoH-Anfrage eingebettet werden
+                    (Methode <code>createQueryChunks</code>). Über <code>sendDoHRequests</code>
+                    werden diese Anfragen an den konfigurierten DoH-Resolver verschickt und die
+                    Antworten zur Entschlüsselung/Decodierung weitergereicht.
+                </p>
+                <p>
+                    Der Server setzt die empfangenen Query-Chunks zu vollständigen Paketen zusammen,
+                    dekodiert sie aus Base32 und entschlüsselt sie bei Bedarf, bevor er die eigentliche
+                    Anfrage bearbeitet und die Antwort verschlüsselt, Base64-kodiert und in
+                    DNS-TXT-Segmenten (bis zu 14 Segmente à 255 Zeichen, insgesamt rund 3.570 Zeichen
+                    pro Antwort) über den DoH-Tunnel zurück an den Client sendet. Ein
+                    Synchronisationsmechanismus hält die Verbindung während der Sitzung aufrecht und
+                    verschickt pro Anfrage Metadaten wie Query-Anzahl, Gesamtgröße, Start-/Endmarkierung
+                    und eine Prüfsumme, damit beide Seiten Vollständigkeit und Reihenfolge der Fragmente
+                    verifizieren und fehlende Pakete erneut anfordern können. Der Proxy-Tunnel fängt
+                    lokale TCP/HTTP-Anfragen des Browsers ab, leitet sie durch den DoH-Tunnel weiter
+                    und stellt die Antwort wieder auf demselben Port bereit.
+                </p>
+
+                <h3>Eingesetzte Technologien</h3>
+                <ul class="whenwhatlist">
+                    <li>Java (Maven, OOP), Bibliothek dnsjava für DNS-/DoH-Anfragen</li>
+                    <li>DNS-over-HTTPS (DoH), DNS-TXT-Datenübertragung, Base32-/Base64-Kodierung</li>
+                    <li>Iodine (zum Erlernen von DNS-Tunneling), Microsoft Azure (VM unter Ubuntu)</li>
+                    <li>Netzwerkanalyse: tcpdump, Wireshark</li>
+                </ul>
+
+                <h3>Ergebnis &amp; Ausblick</h3>
+                <p>
+                    Am Ende stand ein funktionsfähiger DoH-Tunnel: verschlüsselter DoH-Verkehr
+                    zwischen Client und DoH-Resolver, klassischer DNS-Verkehr über UDP (Port 53)
+                    zwischen Resolver und unserem Server. Offen blieb, dass die Strecke zwischen
+                    DoH-Resolver und eigenem Server noch unverschlüsselt läuft – ein logischer
+                    nächster Ausbauschritt für die Weiterentwicklung des Projekts. Das Praktikum hat
+                    mein Verständnis für verdeckte Kommunikationskanäle, Tunnelprotokolle und
+                    Netzwerksicherheit sowie meine praktischen Java- und Cloud-Fähigkeiten deutlich vertieft.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section>
+            <div id="footer">
+                <div id="linke">
+                    <h3 class="logo">Somar Taifour</h3>
+                    <nav class="nav-menu">
+                        <ul class="breadcrumb">
+                            <li><a href="index.html#werbinich" id="listfooterwerbinich">Wer bin Ich?</a></li>
+                            <li><a href="index.html#projekte" id="listfooterprojekte">Projekte</a></li>
+                            <li><a href="index.html#lebenslauf" id="listfooterlebenslauf">Lebenslauf</a></li>
+                            <li><a href="index.html#zertifikate" id="listfooterzertifikate">Zertifikate</a></li>
+                            <li><a href="index.html#blog" id="listfooterblog">Blog</a></li>
+                            <li><a href="index.html#kontakt" id="listfooterkontakt">Kontakt</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <br>
+                <div id="footnotes">
+                    <p>Copyright © 2026 Somar Taifour</p>
+                    <nav>
+                        <ul>
+                            <li><a href="#">Impressum</a></li>
+                            <li><a href="#">Rechtliche Hinweise</a></li>
+                            <li><a href="#">Datenschutzerklärung</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
